@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_rb == null) return;
         Vector2 mv = _movement;
+        Debug.Log(mv);
         if (mv.sqrMagnitude > 1f) mv.Normalize();
         _rb.linearVelocity = mv * speed;
     }
