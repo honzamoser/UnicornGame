@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7790051647457576534}
   - component: {fileID: -3469366266301844112}
   - component: {fileID: 8821336066286453423}
+  - component: {fileID: 1930857763208705919}
   m_Layer: 0
   m_Name: Unicorn
   m_TagString: Untagged
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: c3246d73ec606d84eb89c466da7744a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f0cdc072d9123844d9f0fbe5dd75038c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,6 +109,10 @@ MonoBehaviour:
   topLeftLimit: {x: 0, y: 1.5}
   bottomRightLimit: {x: 3.8, y: 4.5}
   targetPosition: {x: 0, y: 0}
+  animator: {fileID: 0}
+  speed: 1
+  _chillCooldown: 0
+  _moving: 0
 --- !u!95 &8821336066286453423
 Animator:
   serializedVersion: 7
@@ -130,3 +135,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!210 &1930857763208705919
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405283890654936451}
+  m_Enabled: 1
+  m_SortingLayerID: -1919996291
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
