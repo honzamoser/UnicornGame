@@ -475,11 +475,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 132995060}
   m_CullTransparentMesh: 1
-<<<<<<< Updated upstream
 --- !u!1 &204092487
-=======
---- !u!1 &284913823
->>>>>>> Stashed changes
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -487,36 +483,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< Updated upstream
   - component: {fileID: 204092488}
   - component: {fileID: 204092491}
   - component: {fileID: 204092490}
   m_Layer: 0
   m_Name: Ground
-=======
-  - component: {fileID: 284913826}
-  - component: {fileID: 284913825}
-  - component: {fileID: 284913824}
-  m_Layer: 0
-  m_Name: Milker
->>>>>>> Stashed changes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< Updated upstream
 --- !u!4 &204092488
 Transform:
-=======
---- !u!114 &284913824
-MonoBehaviour:
->>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
   m_GameObject: {fileID: 204092487}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
@@ -528,41 +510,20 @@ MonoBehaviour:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &204092490
 TilemapRenderer:
-=======
-  m_GameObject: {fileID: 284913823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7602ea9a0ec89649b163b02d50ace6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UnicornMilkMachine
-  inventory: {fileID: 0}
-  unicornMilkItem: {fileID: 0}
---- !u!212 &284913825
-SpriteRenderer:
->>>>>>> Stashed changes
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
   m_GameObject: {fileID: 204092487}
-=======
-  m_GameObject: {fileID: 284913823}
->>>>>>> Stashed changes
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-<<<<<<< Updated upstream
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
-=======
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
->>>>>>> Stashed changes
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
@@ -596,7 +557,6 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-<<<<<<< Updated upstream
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -606,25 +566,10 @@ SpriteRenderer:
   m_DetectChunkCullingBounds: 0
 --- !u!1839735485 &204092491
 Tilemap:
-=======
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_SpriteSortPoint: 0
---- !u!4 &284913826
-Transform:
->>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
   m_GameObject: {fileID: 204092487}
   m_Enabled: 1
   m_Tiles:
@@ -24505,17 +24450,6 @@ Transform:
     e31: 0
     e32: 0
     e33: 1
-=======
-  m_GameObject: {fileID: 284913823}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.33, y: 1.86, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> Stashed changes
 --- !u!1 &294609793
 GameObject:
   m_ObjectHideFlags: 0
