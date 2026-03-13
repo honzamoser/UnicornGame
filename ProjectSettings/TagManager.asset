@@ -42,11 +42,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Unicorn
-    uniqueID: 2374971005
-    locked: 0
   - name: Entities
     uniqueID: 465367733
+    locked: 0
+  - name: Unicorn
+    uniqueID: 2374971005
     locked: 0
   - name: Player
     uniqueID: 4148287871
