@@ -26,6 +26,8 @@ namespace DefaultNamespace.Systems
 
         public Vector2 spawnLocation;
         public GameObject unicornPrefab;
+        
+        public GameObject PenUI;
 
         private void FixedUpdate()
         {
@@ -51,6 +53,11 @@ namespace DefaultNamespace.Systems
             }
         }
 
+        public void Interact()
+        {
+            PenUI.SetActive(!PenUI.activeSelf);
+        }
+
         private void SellUnicorn()
         {
             if (animalCount > 0)
@@ -70,7 +77,6 @@ namespace DefaultNamespace.Systems
         public void SpawnUnicornFromInventory(Vector2 position)
         {
             animals.Add(Instantiate(unicornPrefab, position, Quaternion.identity));
-            animalCount += 1;
             UpdateText();
         }
 
@@ -79,7 +85,6 @@ namespace DefaultNamespace.Systems
             if (animals.Contains(unicornBehaviour.gameObject))
             {
                 animals.Remove(unicornBehaviour.gameObject);
-                animalCount -= 1;
                 UpdateText();
             }
         }

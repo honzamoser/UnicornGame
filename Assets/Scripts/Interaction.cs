@@ -11,7 +11,7 @@ namespace DefaultNamespace
         public List<GameObject> targetObjects = new List<GameObject>();
         public GameObject InteractButton;
 
-        public GameObject PenUI;
+        
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -68,12 +68,8 @@ namespace DefaultNamespace
                 if (Keyboard.current.eKey.wasPressedThisFrame)
                 {
                     Debug.Log(hit[0].collider.name);
-                    switch (hit[0].collider.name)
-                    {
-                        case "Pen":
-                            PenUI.SetActive(!PenUI.activeSelf);
-                            break;
-                    }
+                    hit[0].collider.gameObject.SendMessageUpwards("Interact");
+                    
                 }
             }
         }

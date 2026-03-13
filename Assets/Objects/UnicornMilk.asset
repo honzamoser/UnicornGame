@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac4dcb55014a4e7dbd539f6a745eb96e, type: 3}
-  m_Name: Lasso
+  m_Name: UnicornMilk
   m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.InventoryItem
-  itemName: Lasso
+  itemName: UnicornMilk
   icon: {fileID: -4838013648103053093, guid: 6b8cabd393586f44f8086204ad3cf384, type: 3}
   stackable: 0
+  inventoryPrefab: {fileID: 4444626593677505164, guid: 0ff434266257fca4da5b8adbd2506120, type: 3}
