@@ -1771,7 +1771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6714e8a060a743499c7a6d612a99f8ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.Systems.Pen
-  animalCount: 10
+  animalCount: 0
   maxAnimals: 5
   amountText: {fileID: 600002219}
   capacityText: {fileID: 366916395}
@@ -2579,7 +2579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1462163787
 SpriteRenderer:
   serializedVersion: 2
