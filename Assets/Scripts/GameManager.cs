@@ -1,17 +1,40 @@
 ﻿using System;
+using System.Data.SqlTypes;
 using DefaultNamespace.Systems;
+using TMPro;
 using UnityEngine;
 
 namespace DefaultNamespace
 {
     public class GameManager : MonoBehaviour
     {
-        public GameManager Instance;
+        public static GameManager Instance;
+        [SerializeField]private int money;
+        public int Money {
+            set {
+                money = value;
+                moneyUI.text = value.ToString();
+                PlayerPrefs.SetInt("money", value);
+                PlayerPrefs.Save();
+            }
+            get { return money; }
+        }
+
 
         private void Awake()
         {
-            this.Instance = this;
+            GameManager.Instance = this;
+            if (PlayerPrefs.HasKey("money"))
+            {
+                Money = PlayerPrefs.GetInt("money");
+            }
+            else {
+                Money = 2000;
+            }
+
         }
+
+        public TextMeshProUGUI moneyUI;
 
         public Pen unicornPen;
         

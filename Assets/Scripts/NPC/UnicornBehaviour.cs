@@ -48,7 +48,6 @@ namespace NPC
                     _moving = false;
                     animator?.SetBool("IsWalking", false);
                     _chillCooldown = Random.Range(2f, 5f);
-                    Debug.Log(_chillCooldown);
                 }
             }
             else

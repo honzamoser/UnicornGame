@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace DefaultNamespace
 {
@@ -10,9 +11,10 @@ namespace DefaultNamespace
         public List<GameObject> targetObjects = new List<GameObject>();
         public GameObject InteractButton;
 
+        public GameObject PenUI;
+
         private void OnTriggerEnter2D(Collider2D other)
-        {
-            Debug.Log(other.name);
+        { 
 
             if (other.CompareTag("Interactable"))
             {
@@ -36,7 +38,7 @@ namespace DefaultNamespace
             if (targetObjects.Count == 0) return;
             RaycastHit2D[] hit = new RaycastHit2D[1];
             var contactFilter = new ContactFilter2D();
-            contactFilter.SetLayerMask(~LayerMask.GetMask("Player"));
+            contactFilter.SetLayerMask(LayerMask.GetMask("Systems"));
             int closesObjectIndex = 0;
             float closestObjectDistance = Vector2.Distance(transform.position, targetObjects[0].transform.position);
 
@@ -58,6 +60,16 @@ namespace DefaultNamespace
             {
                 InteractButton.SetActive(true);
                 InteractButton.transform.position = hit[0].point;
+
+                if (Keyboard.current.eKey.wasPressedThisFrame) {
+                    Debug.Log(hit[0].collider.name);
+                    switch(hit[0].collider.name)
+                    {
+                        case "Pen":
+                            PenUI.SetActive(!PenUI.activeSelf);
+                            break;
+                    }
+                }
             }
         }
     }
