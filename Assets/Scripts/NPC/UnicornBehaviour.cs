@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DefaultNamespace;
+using UnityEngine;
 
 namespace NPC
 {
@@ -12,8 +13,10 @@ namespace NPC
         public float speed = 1f;
 
         private SpriteRenderer _spriteRenderer;
-        [SerializeField]private float _chillCooldown;
-        [SerializeField]private bool _moving;
+        [SerializeField] private float _chillCooldown;
+        [SerializeField] private bool _moving;
+
+        public bool isInPen = false;
 
         private void Awake()
         {
@@ -31,6 +34,14 @@ namespace NPC
 
         private void Update()
         {
+            if (transform.position.y < topLeftLimit.y
+                && transform.position.y > bottomRightLimit.y
+                && transform.position.x > topLeftLimit.x
+                && transform.position.x < bottomRightLimit.x)
+            {
+                isInPen = true;
+            } else isInPen = false;
+
             if (_moving)
             {
                 // Move towards target using 2D positions
@@ -79,6 +90,12 @@ namespace NPC
 
             if (_spriteRenderer != null)
                 _spriteRenderer.flipX = (targetPosition.x > transform.position.x);
+        }
+
+        public void Remove()
+        {
+            GameManager.Instance.unicornPen.UnicornPickedUp(this);
+            GameManager.Instance.unicornPen.UpdateText();
         }
     }
 }

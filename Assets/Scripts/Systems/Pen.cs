@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using NPC;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -29,17 +30,6 @@ namespace DefaultNamespace.Systems
         private void FixedUpdate()
         {
             _timer += Time.fixedDeltaTime;
-
-            while (animalCount > animals.Count)
-            {
-                animals.Add(Instantiate(unicornPrefab, spawnLocation, Quaternion.identity));
-            }
-
-            while (animalCount < animals.Count)
-            {
-                Destroy(animals[animals.Count - 1]);
-                animals.RemoveAt(animals.Count - 1);
-            }
         }
 
         private void Start()
@@ -49,26 +39,49 @@ namespace DefaultNamespace.Systems
             UpdateText();
         }
 
-        private void BuyUnicorn() {
+        private void BuyUnicorn()
+        {
             Debug.Log(GameManager.Instance.Money);
-            if (animalCount < maxAnimals && GameManager.Instance.Money >= 200) {
+            if (animalCount < maxAnimals && GameManager.Instance.Money >= 200)
+            {
                 animalCount += 1;
                 GameManager.Instance.Money -= 200;
+                animals.Add(Instantiate(unicornPrefab, spawnLocation, Quaternion.identity));
                 UpdateText();
             }
         }
 
-        private void SellUnicorn() {
-            if (animalCount > 0) {
+        private void SellUnicorn()
+        {
+            if (animalCount > 0)
+            {
                 animalCount -= 1;
                 UpdateText();
             }
         }
 
-        private void UpdateText() {
+        public void UpdateText()
+        {
             amountText.text = $"Amount: {animalCount}";
             capacityText.text = $"Capacity: {maxAnimals}";
             deadText.text = "Dead: 0";
+        }
+
+        public void SpawnUnicornFromInventory(Vector2 position)
+        {
+            animals.Add(Instantiate(unicornPrefab, position, Quaternion.identity));
+            animalCount += 1;
+            UpdateText();
+        }
+
+        public void UnicornPickedUp(UnicornBehaviour unicornBehaviour)
+        {
+            if (animals.Contains(unicornBehaviour.gameObject))
+            {
+                animals.Remove(unicornBehaviour.gameObject);
+                animalCount -= 1;
+                UpdateText();
+            }
         }
     }
 }

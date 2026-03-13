@@ -1,0 +1,38 @@
+﻿using System;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+namespace DefaultNamespace.InventoryBehaviours
+{
+    public class UnicornIB : MonoBehaviour
+    {
+        public GameObject unicornPrefab;
+
+        private void Start()
+        {
+            GameManager.Instance.disableInteraction = true;
+        }
+
+        private void Update()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (GameManager.Instance.unicornPen.animalCount + 1 > GameManager.Instance.unicornPen.maxAnimals)
+                {
+                    GameManager.Instance.disableInteraction = false;
+                    return;
+                }
+
+                Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                GameManager.Instance.unicornPen.SpawnUnicornFromInventory(mousePos);
+                GameManager.Instance.disableInteraction = false;
+                GameManager.Instance.Inventory.RemoveCurrentItem();
+            }
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.Instance.disableInteraction = false;
+        }
+    }
+}

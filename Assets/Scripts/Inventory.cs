@@ -13,6 +13,8 @@ public class Inventory : MonoBehaviour
     public bool isItemSelected = false;
     public int selectedItem = 0;
 
+    public GameObject currentInventoryItem;
+
     void Start()
     {
         int i = 0;
@@ -28,6 +30,7 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        int previousSelectedItem = selectedItem;
         int pressedKey = -1;
 
         if (Keyboard.current.digit1Key.wasPressedThisFrame) pressedKey = 0;
@@ -52,6 +55,29 @@ public class Inventory : MonoBehaviour
                 itemIcons[i].sprite = null;
                 itemIcons[i].gameObject.SetActive(false);
             }
+        }
+
+        if (previousSelectedItem != selectedItem)
+        {
+            Destroy(currentInventoryItem);
+        }
+        
+        if (isItemSelected && items[selectedItem] != null && currentInventoryItem == null)
+        {
+            
+
+            currentInventoryItem = Instantiate(items[selectedItem].inventoryPrefab);
+        }
+
+        if (!isItemSelected && currentInventoryItem != null)
+        {
+            Destroy(currentInventoryItem);
+            currentInventoryItem = null;
+        }
+
+        if (currentInventoryItem != null)
+        {
+            currentInventoryItem.transform.position = GameManager.Instance.playerHandOffset;
         }
     }
 
@@ -93,5 +119,37 @@ public class Inventory : MonoBehaviour
     public void UnHighlightSlot()
     {
         itemSlots[selectedItem].color = Color.white;
+    }
+
+    public void Add(InventoryItem item)
+    {
+        for (int i = 0; i < _capacity; i++)
+        {
+            if (items[i] == null)
+            {
+                items[i] = item;
+                return;
+            }
+        }
+    }
+
+    public bool HasCapacity()
+    {
+        for (int i = 0; i < _capacity; i++)
+        {
+            if (items[i] == null)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void RemoveCurrentItem()
+    {
+        items[selectedItem] = null;
+        isItemSelected = false;
+        UnHighlightSlot();
     }
 }

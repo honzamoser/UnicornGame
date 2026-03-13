@@ -1,3 +1,4 @@
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -37,6 +38,9 @@ public class PlayerMovement : MonoBehaviour
                 // Nastavíme směr, kterým se díváme
                 _animator.SetFloat("Horizontal", _movement.x);
                 _animator.SetFloat("Vertical", _movement.y);
+                
+                GameManager.Instance.playerHandOffset = 
+                    new Vector2(_movement.x * 0.5f + transform.position.x, _movement.y * 0.5f + transform.position.y); // Nastavíme offset ruky podle směru pohybu
 
                 // Říkáme, že se hýbeme
                 _animator.SetBool("isWalking", true);

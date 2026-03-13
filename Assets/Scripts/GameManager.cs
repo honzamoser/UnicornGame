@@ -37,7 +37,10 @@ namespace DefaultNamespace
         public TextMeshProUGUI moneyUI;
 
         public Pen unicornPen;
-        
-        
+
+        public Inventory Inventory;
+        public bool disableInteraction;
+
+        public Vector2 playerHandOffset = Vector2.zero;
     }
 }

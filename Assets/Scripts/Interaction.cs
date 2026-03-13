@@ -14,8 +14,7 @@ namespace DefaultNamespace
         public GameObject PenUI;
 
         private void OnTriggerEnter2D(Collider2D other)
-        { 
-
+        {
             if (other.CompareTag("Interactable"))
             {
                 targetObjects.Add(other.gameObject);
@@ -29,12 +28,17 @@ namespace DefaultNamespace
             {
                 targetObjects.Remove(other.gameObject);
             }
-            
-            if(targetObjects.Count == 0) InteractButton.SetActive(false);
+
+            if (targetObjects.Count == 0) InteractButton.SetActive(false);
         }
 
         private void Update()
         {
+            if (Input.GetMouseButtonDown(0) && !GameManager.Instance.disableInteraction)
+            {
+                PickupInteraction();
+            }
+
             if (targetObjects.Count == 0) return;
             RaycastHit2D[] hit = new RaycastHit2D[1];
             var contactFilter = new ContactFilter2D();
@@ -61,14 +65,32 @@ namespace DefaultNamespace
                 InteractButton.SetActive(true);
                 InteractButton.transform.position = hit[0].point;
 
-                if (Keyboard.current.eKey.wasPressedThisFrame) {
+                if (Keyboard.current.eKey.wasPressedThisFrame)
+                {
                     Debug.Log(hit[0].collider.name);
-                    switch(hit[0].collider.name)
+                    switch (hit[0].collider.name)
                     {
                         case "Pen":
                             PenUI.SetActive(!PenUI.activeSelf);
                             break;
                     }
+                }
+            }
+        }
+
+        private void PickupInteraction()
+        {
+            // get the collider under the cursor
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+
+
+            if (hit.collider != null && hit.collider.gameObject.TryGetComponent<Pickupable>(out Pickupable pickupable))
+            {
+                if (GameManager.Instance.Inventory.HasCapacity())
+                {
+                    InventoryItem item = pickupable.PickUp();
+                    GameManager.Instance.Inventory.Add(item);
                 }
             }
         }

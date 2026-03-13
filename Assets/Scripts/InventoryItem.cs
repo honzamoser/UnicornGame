@@ -8,5 +8,7 @@ namespace DefaultNamespace
         public string itemName;
         public Sprite icon;
         public bool stackable;
+        
+        public GameObject inventoryPrefab;
     }
 }
