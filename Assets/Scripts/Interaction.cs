@@ -86,7 +86,8 @@ namespace DefaultNamespace
                 if (GameManager.Instance.Inventory.HasCapacity())
                 {
                     InventoryItem item = pickupable.PickUp();
-                    GameManager.Instance.Inventory.Add(item);
+                    int slotLocation = GameManager.Instance.Inventory.Add(item);
+                    pickupable.AfterPickup(slotLocation);
                 }
             }
         }

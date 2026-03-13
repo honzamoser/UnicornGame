@@ -115,6 +115,8 @@ MonoBehaviour:
   speed: 1
   _chillCooldown: 0
   _moving: 0
+  isInPen: 0
+  id: 0
 --- !u!95 &8821336066286453423
 Animator:
   serializedVersion: 7
@@ -146,7 +148,7 @@ SortingGroup:
   m_GameObject: {fileID: 1405283890654936451}
   m_Enabled: 1
   m_SortingLayerID: -1919996291
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_SortAtRoot: 0
   m_Sort3DAs2D: 0
@@ -163,21 +165,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.Pickupable
   thisItem: {fileID: 11400000, guid: 81ec3f3975d65f24ab377c934f67964d, type: 2}
-  actions:
+  beforePickup:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -3469366266301844112}
-        m_TargetAssemblyTypeName: NPC.UnicornBehaviour, Assembly-CSharp
-        m_MethodName: Remove
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  thisUnicorn: {fileID: -3469366266301844112}
 --- !u!58 &6391994266534682528
 CircleCollider2D:
   m_ObjectHideFlags: 0

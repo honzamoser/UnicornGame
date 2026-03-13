@@ -7,6 +7,12 @@ namespace DefaultNamespace.InventoryBehaviours
     public class UnicornIB : MonoBehaviour
     {
         public GameObject unicornPrefab;
+        public int inventorySlot;
+
+        public void SetId(int id)
+        {
+            this.inventorySlot = id;
+        }
 
         private void Start()
         {
@@ -17,9 +23,8 @@ namespace DefaultNamespace.InventoryBehaviours
         {
             if (Input.GetMouseButtonDown(0))
             {
-
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                GameManager.Instance.unicornPen.SpawnUnicornFromInventory(mousePos);
+                GameManager.Instance.unicornPen.SpawnUnicornFromInventory(mousePos, inventorySlot);
                 GameManager.Instance.disableInteraction = false;
                 GameManager.Instance.Inventory.RemoveCurrentItem();
             }

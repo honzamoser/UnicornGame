@@ -17,6 +17,8 @@ namespace NPC
         [SerializeField] private bool _moving;
 
         public bool isInPen = false;
+        
+        public int id;
 
         private void Awake()
         {
@@ -92,10 +94,12 @@ namespace NPC
                 _spriteRenderer.flipX = (targetPosition.x > transform.position.x);
         }
 
-        public void Remove()
+        public void AfterRemove(int _id)
         {
+            Debug.Log("inventory slot " + _id);
             GameManager.Instance.unicornPen.UnicornPickedUp(this);
             GameManager.Instance.unicornPen.UpdateText();
+            GameManager.Instance.unicornPen.InventoryUnicornIds[_id] = this.id;
         }
     }
 }

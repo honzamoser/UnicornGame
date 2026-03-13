@@ -1,4 +1,6 @@
+using System;
 using DefaultNamespace;
+using DefaultNamespace.Systems;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -14,6 +16,7 @@ public class Inventory : MonoBehaviour
     public int selectedItem = 0;
 
     public GameObject currentInventoryItem;
+    public InventoryItem unicornItem;
 
     void Start()
     {
@@ -24,6 +27,26 @@ public class Inventory : MonoBehaviour
             var i1 = i;
             b.onClick.AddListener(() => ClickSelectSlot(i1));
             i++;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        for (int i = 0; i < _capacity; i++)
+        {
+            InventoryItem item = items[i];
+            if (item == unicornItem)
+            {
+                var data =
+                    GameManager.Instance.unicornPen.unicorns[GameManager.Instance.unicornPen.InventoryUnicornIds[i]];
+                GameManager.Instance.unicornPen.unicorns[GameManager.Instance.unicornPen.InventoryUnicornIds[i]] =
+                    new UnicornData()
+                    {
+                        id = data.id,
+                        lastMilkingTime = data.lastMilkingTime + Time.fixedDeltaTime,
+                        hasBody = data.hasBody
+                    };
+            }
         }
     }
 
@@ -61,12 +84,11 @@ public class Inventory : MonoBehaviour
         {
             Destroy(currentInventoryItem);
         }
-        
+
         if (isItemSelected && items[selectedItem] != null && currentInventoryItem == null)
         {
-            
-
             currentInventoryItem = Instantiate(items[selectedItem].inventoryPrefab);
+            currentInventoryItem.SendMessage("SetId", selectedItem);
         }
 
         if (!isItemSelected && currentInventoryItem != null)
@@ -121,16 +143,18 @@ public class Inventory : MonoBehaviour
         itemSlots[selectedItem].color = Color.white;
     }
 
-    public void Add(InventoryItem item)
+    public int Add(InventoryItem item)
     {
         for (int i = 0; i < _capacity; i++)
         {
             if (items[i] == null)
             {
                 items[i] = item;
-                return;
+                return i;
             }
         }
+
+        return -1;
     }
 
     public bool HasCapacity()

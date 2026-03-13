@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: UnicornMilk
   m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.InventoryItem
   itemName: UnicornMilk
-  icon: {fileID: -4838013648103053093, guid: 6b8cabd393586f44f8086204ad3cf384, type: 3}
+  icon: {fileID: 21300000, guid: 419d0a6070b2e9f4088a4aa967150089, type: 3}
   stackable: 0
   inventoryPrefab: {fileID: 4444626593677505164, guid: 0ff434266257fca4da5b8adbd2506120, type: 3}
