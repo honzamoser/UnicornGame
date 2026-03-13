@@ -77,8 +77,23 @@ namespace DefaultNamespace.Systems
             if (unicorns.Count > 0)
             {
                 GameManager.Instance.Money += 100;
-                unicorns.Remove(unicorns[lastId].id);
-                unicornBodies.Remove(unicorns[lastId].id);
+
+                if (unicorns[lastId - 1].hasBody)
+                {
+                    Destroy(unicornBodies[lastId - 1]);
+                    unicornBodies.Remove(lastId - 1);
+                }
+
+                unicorns.Remove(lastId - 1);
+                int inventorySlot = Array.IndexOf(InventoryUnicornIds, lastId - 1);
+                lastId -= 1;
+
+
+                if (inventorySlot != -1)
+                {
+                    GameManager.Instance.Inventory.RemoveItem(inventorySlot);
+                }
+
                 UpdateText();
             }
         }
@@ -97,6 +112,11 @@ namespace DefaultNamespace.Systems
             body.GetComponent<UnicornBehaviour>().id = unicornId;
             unicornBodies.Add(unicornId, body);
             InventoryUnicornIds[slotId] = -1;
+            unicorns[unicornId] = new UnicornData
+            {
+                id = unicornId, lastMilkingTime = unicorns[unicornId].lastMilkingTime,
+                hasBody = true
+            };
             UpdateText();
         }
 

@@ -175,5 +175,21 @@ public class Inventory : MonoBehaviour
         items[selectedItem] = null;
         isItemSelected = false;
         UnHighlightSlot();
+        Destroy(currentInventoryItem);
+    }
+
+    public void RemoveItem(int inventorySlot)
+    {
+        if(inventorySlot == selectedItem)
+        {
+            RemoveCurrentItem();
+            return;
+        }
+        else
+        {
+            items[inventorySlot] = null;
+            GameManager.Instance.unicornPen.InventoryUnicornIds[inventorySlot] = -1;
+        }
+
     }
 }

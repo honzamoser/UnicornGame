@@ -24849,7 +24849,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: this unicorn has been recently milked! Try again in 10s
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c57d0bda9cd3bd54ea2dd00eaa4f112e, type: 2}
   m_sharedMaterial: {fileID: 2260923162327259300, guid: c57d0bda9cd3bd54ea2dd00eaa4f112e, type: 2}
