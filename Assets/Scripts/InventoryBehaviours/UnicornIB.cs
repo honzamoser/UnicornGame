@@ -17,11 +17,6 @@ namespace DefaultNamespace.InventoryBehaviours
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (GameManager.Instance.unicornPen.animalCount + 1 > GameManager.Instance.unicornPen.maxAnimals)
-                {
-                    GameManager.Instance.disableInteraction = false;
-                    return;
-                }
 
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 GameManager.Instance.unicornPen.SpawnUnicornFromInventory(mousePos);
