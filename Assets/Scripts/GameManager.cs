@@ -26,7 +26,7 @@ namespace DefaultNamespace
             GameManager.Instance = this;
             if (PlayerPrefs.HasKey("money"))
             {
-                Money = PlayerPrefs.GetInt("money");
+                Money = 2000;
             }
             else {
                 Money = 2000;
